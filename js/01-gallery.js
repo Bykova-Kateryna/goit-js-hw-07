@@ -32,21 +32,24 @@ function OpenModalImg (event){
 
     const instance = basicLightbox.create(`
         <img src="${event.target.dataset.source}" width="800" height="600">
-    `)
+    `, {
+      onShow: (instance) => {
+        window.addEventListener("keydown", keydown)},
+      onClose: (instance) => {
+        window.removeEventListener("keydown", keydown)
+        },
+    })
    
+
      if (event.target.nodeName === 'IMG') {     
     instance.show()
      };
-     
-   
-     document.addEventListener("keydown", keydown)
 
      function keydown (event){
-        if (event.key === 'Escape'){
-            instance.close()
-            document.removeEventListener("keydown", keydown)
-        }
-    }
+      if (event.key === 'Escape'){
+          instance.close()
+      }
+    };
 
 };
 

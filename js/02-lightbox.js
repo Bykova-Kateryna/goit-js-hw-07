@@ -17,22 +17,12 @@ function createGarery (galleryItems) {
 
 gallery.insertAdjacentHTML("beforeend", createGalleryItems)
 
-gallery.addEventListener("click", lightboxShow);
-
-function lightboxShow (event) {
-    event.preventDefault();
-
-    if (event.target.nodeName !== 'IMG'){
-        return
-    };
-
-    const lightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox(".gallery a", {
         captionsData: "alt",
         captionDelay: 250,
     });
 
-    gallery.removeEventListener("click", lightboxShow);
-}
+
 
 
 
